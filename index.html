@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мое Резюме</title>
+    <style>
+        body {
+            font-family: Tahoma, serif;
+            background-color: #f4f4f9;
+            transition: background-color 0.5s; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .resume-container {
+            background: white;
+            padding: 30px;
+            border: 2px solid #ddd; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #008CBA; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            color: #333; 
+            font-size: 26px; 
+            text-align: center;
+            text-shadow: 1px 1px 2px #ccc; 
+            margin: 10px 0;
+        }
+
+        h2 {
+            color: #555;
+            font-size: 20px;
+            border-bottom: 2px solid #eee; 
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        p:hover {
+            background-color: #f0f8ff; 
+            transform: translateX(5px); 
+        }
+
+        .learned-ok { color: green; }
+        .learning-in-progress { color: orange; }
+        .not-learned { color: red; }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; 
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049; 
+        }
+
+        .bg-btn {
+            background-color: #008CBA;
+        }
+        
+        .bg-btn:hover {
+            background-color: #007bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <img src="photo.jpg" alt="Мое фото" class="profile-pic">
+        
+        <h1>Имя: Олег</h1>
+        <h1>Фамилия: <span id="last-name">Попадюк</span></h1>
+
+        <h2>Резюме</h2>
+        <p class="learned-ok">Студент</p>
+        <p class="learned-ok">3 курс направления "Автоматизация технологических процессов и производств"</p>
+        <p class="learned-ok">Инженер-программист</p>
+        <p class="learned-ok">Инженер-программист ПЛК</p>
+        <p class="learned-ok">Инженер-программист станков с ЧПУ</p>
+        <p class="learned-ok">Программист, разработчик</p>
+
+        <div class="controls">
+            <input type="text" id="new-lastname" placeholder="Введите новую фамилию">
+            <button onclick="changeLastName()">Изменить фамилию</button>
+            <button onclick="changeBgColor()" class="bg-btn">Изменить фон страницы</button>
+        </div>
+    </div>
+
+    <script>
+        function changeLastName() {
+            let inputVal = document.getElementById('new-lastname').value;
+
+            if (inputVal !== "") {
+                document.getElementById('last-name').innerText = inputVal;
+                document.getElementById('new-lastname').value = ""; 
+            } else {
+                alert("Пожалуйста, введите фамилию!");
+            }
+        }
+
+        function changeBgColor() {
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            
+            document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+    </script>
+
+</body>
+</html>

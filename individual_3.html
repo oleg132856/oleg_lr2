@@ -1,0 +1,17 @@
+<script>
+    while (true) {
+        let age = prompt('Пожалуйста, введите ваш возраст:', '');
+
+        if (age === null) {
+            continue; 
+        }
+
+        let isCorrect = confirm('Вам действительно ' + age + ' лет?');
+        
+        if (isCorrect === true) {
+            break; 
+        }
+    }
+    
+    alert('Отлично, возраст подтвержден!');
+</script>
