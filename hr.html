@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css" media="screen,projection"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    
+    <div class="row">
+        <div class="col s2">
+            <div class="row">
+                <form class="col s12"> 
+                    <div class="row">
+                        <div class="input-field col s12"> 
+                            <input id="name" type="text" class="validate">
+                            <label for="name">Имя</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="age" type="text" class="validate">
+                            <label for="age">Возраст</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="sex" type="text" class="validate">
+                            <label for="sex">Пол</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="city" type="text" class="validate">
+                            <label for="city">Город проживания</label>
+                        </div>
+                    </div>
+
+                    <p> <input type="checkbox" id="education"> <label for="education">Высшее образование</label> </p>
+                    <p> <input type="checkbox" id="mathematic"> <label for="mathematic">Знание математики</label> </p>
+                    <p> <input type="checkbox" id="asu"> <label for="asu">Знание АСУ ТП</label> </p>
+                    <p> <input type="checkbox" id="cutting"> <label for="cutting">Знание теории резания</label> </p>
+                    <p> <input type="checkbox" id="programming"> <label for="programming">Знание программирования</label> </p>
+                    <p> <input type="checkbox" id="english"> <label for="english">Знание английского языка</label> </p>
+
+                    <p id="startTest" class="my-button" style="cursor: pointer;"> <b> Заполнить анкету </b> </p>
+                    
+                    <p id="checkMe" class="my-button" style="display: none; cursor: pointer; color: #26a69a;"> <b> Меня возьмут </b> </p>
+
+                    <div id="div1">(если хотите узнать, подходите ли вы нам)</div>
+                </form>
+
+                <script type="text/javascript">
+                    document.getElementById('startTest').addEventListener('click', function() {
+                        
+                        // Валидация данных
+                        let nameInput = document.getElementById('name');
+                        let nameVal = nameInput.value;
+                        while (!/^[a-zA-Zа-яА-ЯёЁ\s]+$/.test(nameVal) || nameVal.trim() === "") {
+                            nameVal = prompt("Ошибка! Имя должно содержать только буквы:", nameVal || "");
+                            if (nameVal === null) return;
+                        }
+                        nameInput.value = nameVal;
+
+                        let ageInput = document.getElementById('age');
+                        let ageVal = ageInput.value;
+                        while (!/^\d+$/.test(ageVal)) {
+                            ageVal = prompt("Ошибка! Введите возраст цифрами:", ageVal || "");
+                            if (ageVal === null) return;
+                        }
+                        ageInput.value = ageVal;
+
+                        let sexInput = document.getElementById('sex');
+                        let sexVal = sexInput.value.trim().toUpperCase(); 
+                        while (sexVal !== "М" && sexVal !== "Ж") {
+                            sexVal = prompt("Ошибка! Введите М или Ж:", sexVal || "");
+                            if (sexVal === null) return;
+                            sexVal = sexVal.toUpperCase(); 
+                        }
+                        sexInput.value = sexVal;
+
+                        alert("Анкета заполнена корректно!");
+                        
+                        document.getElementById('checkMe').style.display = 'block';
+                        document.getElementById('startTest').style.display = 'none';
+                        document.getElementById('div1').style.display = 'none';
+                    });
+
+                    document.getElementById('checkMe').addEventListener('click', function() {
+                        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                        checkboxes.forEach(function(cb) {
+                            cb.disabled = true;
+                        });
+                        alert("Данные анкеты заблокированы для изменений.");
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="col s7">
+            <img id="background" style="background-image: url('https://i.ytimg.com/vi/I3NblKbvhvw/maxresdefault.jpg'); background-size: cover; height: 100vh;">
+        </div>
+    </div>
+</body>
+</html>
