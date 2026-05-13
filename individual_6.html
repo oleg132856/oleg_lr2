@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Резюме</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --light-text: #777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #128f76;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .experience-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .experience-table th, .experience-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .experience-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .accordion-item {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px 20px;
+            background-color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #f9f9f9;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            padding: 0 20px;
+            background-color: #fafafa;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            padding: 15px 20px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Олег Попадюк</h1>
+            <p>Инженер-программист ПЛК | Студент</p>
+            <button class="btn" id="scrollBtn">Связаться со мной</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="education" class="fade-in">
+            <h2>Образование</h2>
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <h3>Московский Государственный Технический Университет "СТАНКИН"</h3>
+                <p style="color: var(--light-text);">2026 - Настоящее время</p>
+                <p>3 курс. Направление: "Автоматизация технологических процессов и производств".</p>
+            </div>
+        </section>
+
+        <section id="experience" class="fade-in">
+            <h2>Опыт работы</h2>
+            <div style="overflow-x:auto;">
+                <table class="experience-table">
+                    <thead>
+                        <tr>
+                            <th>Период</th>
+                            <th>Компания</th>
+                            <th>Должность</th>
+                            <th>Обязанности</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023 - 2024</td>
+                            <td>ООО "ТехноАвтоматика"</td>
+                            <td>Младший инженер ПЛК</td>
+                            <td>Программирование контроллеров, настройка датчиков, участие в пусконаладочных работах.</td>
+                        </tr>
+                        <tr>
+                            <td>2024 - Наст. время</td>
+                            <td>АО "ПромИнтеграция"</td>
+                            <td>Инженер-программист</td>
+                            <td>Разработка систем управления (SCADA), оптимизация алгоритмов, ведение проектной документации.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="skills" class="fade-in">
+            <h2>Ключевые навыки</h2>
+            <div class="skills-grid">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Программирование ПЛК</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Опыт программирования логических контроллеров стандарта IEC 61131-3 (ST, LD, FBD). Работа с оборудованием ОВЕН, Siemens.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Веб-разработка</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Базовые знания HTML5, CSS3, JavaScript. Создание адаптивных страниц, работа с DOM и базовыми алгоритмами.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>САПР и Черчение</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Уверенное владение КОМПАС-3D и AutoCAD. Создание электрических схем и 3D-моделей узлов.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Soft Skills</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Аналитическое мышление, умение работать в команде, способность быстро разбираться в новой технической документации.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="fade-in">
+            <h2>Связаться со мной</h2>
+            <form class="contact-form" id="resumeForm">
+                <div class="form-group">
+                    <label for="contactName">Ваше имя:</label>
+                    <input type="text" id="contactName" placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Ваш Email:</label>
+                    <input type="email" id="contactEmail" placeholder="example@mail.ru">
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Сообщение:</label>
+                    <textarea id="contactMessage" placeholder="Добрый день! Предлагаем вам вакансию..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Отправить сообщение</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Олег Попадюк. Все права защищены.</p>
+        <br>
+        <a href="#" class="btn" onclick="alert('Файл резюме (PDF) начал скачиваться!'); return false;">Скачать резюме (PDF)</a>
+    </footer>
+
+    <script>
+        document.getElementById('scrollBtn').addEventListener('click', function() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+
+                const arrow = this.querySelector('span:nth-child(2)');
+                if(parent.classList.contains('active')) {
+                    arrow.innerText = '▲';
+                } else {
+                    arrow.innerText = '▼';
+                }
+            });
+        });
+
+        document.getElementById('resumeForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+
+            if (name === "" || email === "" || message === "") {
+                alert("Ошибка: Пожалуйста, заполните все поля формы перед отправкой.");
+                return;
+            }
+
+            if (!email.includes("@")) {
+                alert("Ошибка: Пожалуйста, введите корректный адрес электронной почты.");
+                return;
+            }
+
+            alert(`Спасибо, ${name}! Ваше сообщение успешно отправлено.`);
+            this.reset(); 
+        });
+
+        const faders = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15, 
+            rootMargin: "0px 0px -50px 0px" 
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target); 
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
